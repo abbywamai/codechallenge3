@@ -1,0 +1,13 @@
+make a GET request to retrieve the details of the first movie from the endpoint /films/1. Extract the necessary information such as the poster, title, runtime, showtime, tickets sold, and capacity.
+
+Calculate the number of available tickets by subtracting the tickets sold from the theater's capacity.
+
+Display the movie details, including the poster, title, runtime, showtime, and available tickets, on the page.
+
+Make a GET request to retrieve the list of all movies from the endpoint /films and populate the ul#films element with the movie titles. Optionally, add the classes film and item to each li element for styling purposes.
+
+Implement the "Buy Ticket" functionality. Attach a click event handler to the "Buy Ticket" button for the first movie. When the button is clicked, perform the following steps:
+
+Check if there are available tickets (the number of available tickets is greater than 0).
+If there are available tickets, decrease the available ticket count by 1 and update it on the frontend.
+If there are no available tickets, display a message to indicate that the showing is sold out.
