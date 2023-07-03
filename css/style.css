@@ -1,0 +1,72 @@
+  *{
+    margin: 0;
+    color: black;
+    
+    
+    }
+
+    body{
+        background-image: url("/pexels-tima-miroshnichenko-5662857.jpg");
+        background-attachment: fixed;
+    }
+
+    
+    #h1{
+        font-size: 5rem;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 100;
+        margin-left: 20rem;
+        text-decoration: underline 0.2rem;
+        text-align: center;
+    }
+    h1.underline-heading {
+        text-decoration: underline;
+        text-decoration-color: aliceblue;
+        text-decoration-line: underline;
+      }
+    #nav{
+        
+        margin-right: 15rem;
+        
+    } 
+    #poster {
+        width: 300px;
+        height: auto;
+        margin-bottom: 10px;
+        
+      }
+      #firstMovie {
+        
+        
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+        margin-left: 30rem;
+
+      }
+
+      
+         #posterimg{
+            width: 300px;
+            height: auto;
+            margin-bottom: 10px;
+            justify-content: center;
+            border: solid black 2px;
+        }
+        
+
+#sidebar{
+  float: left;
+  width: 25%;
+  padding: 20px;
+  
+}
+.main{
+  display: inline;
+  float: left;
+  width: 75%;
+  padding: 20px;
+}
+div{
+  display: flex;
+}
