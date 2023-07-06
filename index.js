@@ -25,7 +25,7 @@ fetch(`http://localhost:4000/films/1`)
       if (ticketsAvailable > 0) {
         // Decrement the available tickets count and update the display
         ticketsAvailable--;
-        document.getElementById('tickets').textContent = ticketsAvailable;
+        document.getElementById('tickets').textContent = ticketsAvailable - 1;
         alert(`Ticket bought for ${title}`);
       } else {
         alert('Tickets are sold out.');
@@ -71,7 +71,7 @@ fetchFilmDetails();
 function buyTicket(movieTitle, availableTickets) {
   if (availableTickets > 0) {
     availableTickets--;
-    document.getElementById('ticketsAvailable').textContent = `Tickets Available: ${availableTickets}`;
+    document.getElementById('ticketsAvailable').textContent = `Tickets Available: ${availableTickets} - 1`;
     alert(`Ticket bought for ${movieTitle}`);
   } else {
     alert(`Sorry, tickets are sold out for ${movieTitle}`);
