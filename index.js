@@ -1,95 +1,79 @@
 
-
-
+// Fetch movie details for a specific movie
 fetch(`http://localhost:4000/films/1`)
-    // method: "PATCH",
-    // header:{
-    //     "Content-type":"application/json"
-    // },/1
-    // body:JSON.stringify(movie)
-
-.then(res => res.json())
+  .then(res => res.json())
   .then(data => {
-    const { poster, title, runtime, description, showtime, capacity, tickets_sold,} = data;
- const ticketsAvailable = capacity - tickets_sold
-console.log(ticketsAvailable)
-   
+    // Destructure the movie data
+    const { poster, title, runtime, description, showtime, capacity, tickets_sold } = data;
+
+    // Calculate the available tickets count
+    const ticketsAvailable = capacity - tickets_sold;
+
+    console.log(ticketsAvailable);
+
     // Update HTML elements with movie details
-         document.getElementById('poster').src = poster;
-     document.getElementById('description').textContent = description;
+    document.getElementById('poster').src = poster;
+    document.getElementById('description').textContent = description;
     document.getElementById('title').textContent = title;
-   document.getElementById('showtime').textContent = showtime;
-  document.getElementById('runtime').textContent = runtime;
+    document.getElementById('showtime').textContent = showtime;
+    document.getElementById('runtime').textContent = runtime;
     document.getElementById('tickets').textContent = ticketsAvailable;
-//     // document.getElementById('button').addEventListener("click", function() {
-//     // const ticketsAvailable = parseInt(document.getElementById('ticketsAvailable').textContent);
-//     //   if (ticketsAvailable > 0) {
-//     //   document.getElementById('tickets').value = ticketsAvailable - 1;
-//     // } else {
-//     //   alert('Tickets are sold out.');
-//     // }
 
-    document.getElementById('btn').addEventListener("click", function() {
-        alert(ticketsAvailable)
-        document.getElementById('tickets').textContent = ticketsAvailable-1
-        console.log(ticketsAvailable)
-       
-      });
-      
-  
-  
-
+    // Add event listener to the "Buy Tickets" button
+    document.getElementById('btn').addEventListener("click", function () {
+      // Check if tickets are available
+      if (ticketsAvailable > 0) {
+        // Decrement the available tickets count and update the display
+        ticketsAvailable--;
+        document.getElementById('tickets').textContent = ticketsAvailable;
+        alert(`Ticket bought for ${title}`);
+      } else {
+        alert('Tickets are sold out.');
+      }
+    });
   })
   .catch(error => {
     console.log('Error:', error);
-  });
+  })
 
 
 
+    
+// Fetch and display movie details for multiple movies
+function fetchFilmDetails() {
+  const movieDetails = document.getElementById("movieDetails");
 
-    function filmDetails() {
-        const movieDetails = document.getElementById("movieDetails");
-      
-        fetch('http://localhost:4000/films')
-          .then(response => response.json())
-          .then(data => {
-            movieDetails.innerHTML = data.map(film => `
-              <div>
-                <img id = "posterimg" src="${film.poster}" alt="${film.title}" />
-                <p><strong>${film.title}</strong></p>
-                <p><strong>${film.description}</strong></p>
-                <p><strong>Showtime: ${film.showtime}</strong></p>
-                <p><strong>Runtime: ${film.runtime} minutes</strong></p>
-                <p id="Tickets available"><strong>Tickets Available: ${film.capacity - film.tickets_sold}</strong></p>
-                <button id="button" type="button">Buy Tickets</button>
-              </div>
-             
-            `).join('');
-           
-            
-            
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-      }
-      
-      
-      
-      filmDetails();
-      
-      function buyTicket(){
-        const availableTicketsElement = document.getElementById('Tickets Available')
-        let availableTickets = parseInt(availableTicketsElement.textContent)
+  fetch('http://localhost:4000/films')
+    .then(response => response.json())
+    .then(data => {
+      // Generate HTML elements for each movie
+      movieDetails.innerHTML = data.map(film => `
+        <div>
+          <img id="posterimg" src="${film.poster}" alt="${film.title}" />
+          <p><strong>${film.title}</strong></p>
+          <p><strong>${film.description}</strong></p>
+          <p><strong>Showtime: ${film.showtime}</strong></p>
+          <p><strong>Runtime: ${film.runtime} minutes</strong></p>
+          <p id="ticketsAvailable"><strong>Tickets Available: ${film.capacity - film.tickets_sold}</strong></p>
+          <button id="button" type="button" onclick="buyTicket('${film.title}', ${film.capacity - film.tickets_sold})">Buy Tickets</button>
+        </div>
+      `).join('');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
+// Fetch movie details on page load
+fetchFilmDetails();
 
-        if (availableTickets >0){
-          availableTickets--;
-          availableTicketsElement.textContent= availableTickets;
-          console.log(`Ticket bought for ${movie.title}`);
-        } else {
-          console.log(`Sorry, tickets are sold out for ${movie.title}`)
-        }
-      }
-      buyTicket()
-
+// Function to buy a ticket
+function buyTicket(movieTitle, availableTickets) {
+  if (availableTickets > 0) {
+    availableTickets--;
+    document.getElementById('ticketsAvailable').textContent = `Tickets Available: ${availableTickets}`;
+    alert(`Ticket bought for ${movieTitle}`);
+  } else {
+    alert(`Sorry, tickets are sold out for ${movieTitle}`);
+  }
+}
