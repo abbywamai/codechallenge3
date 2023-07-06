@@ -1,42 +1,49 @@
-# codechallenge3
-
-# FLATDANGO Movie Ticket Booking App
-FLATDANGO is a movie ticket booking app that allows users to view movie details and buy tickets. This repository contains the front-end code for the FLATDANGO app.
+# Movie Ticket Booking System
+The Movie Ticket Booking System is a web application that allows users to view movie details and purchase tickets. It provides an intuitive user interface to browse movies, check available showtimes, and buy tickets for a selected movie.
 
 # Features
-Displays movie details including title, description, showtime, runtime, and available tickets.
-Allows users to buy tickets by clicking the "Buy Tickets" button.
-Updates the available tickets count when a ticket is bought.
+Movie Details: Users can view detailed information about a specific movie, including the movie poster, title, description, showtime, and runtime.
 
+Ticket Availability: The system displays the number of tickets available for each movie, allowing users to know the remaining tickets before making a purchase.
 
-The app will display movie details fetched from the server.
-Click the "Buy Tickets" button to buy a ticket for a movie. The available tickets count will update accordingly.
-# Customization
-You can customize the movie details displayed in the app by modifying the filmDetails() function in the index.js file. Update the fetch URL or adjust the HTML template according to your server response structure.
-Feel free to modify the CSS styles in the style.css file to match your desired design.
-# Server Requirements
-The FLATDANGO app relies on a server to fetch movie details. The server should provide the movie data in a specific format (an array of film objects) to work correctly. Make sure you have a server set up that can respond to the fetch request made in the filmDetails() function.
+Ticket Purchase: Users can click the "Buy Tickets" button to purchase tickets for a movie. The system will decrement the available tickets count and display the updated availability.
 
-License
+# Installation
+To run the Movie Ticket Booking System locally, follow these steps:
+
+Clone the repository: git clone <repository-url>
+Navigate to the project directory: cd movie-ticket-booking-system
+Open the index.html file in a web browser.
+Usage
+Launch the application by opening the index.html file in a web browser.
+Browse the list of available movies and click on a movie to view its details.
+Check the available tickets count for the selected movie.
+Click the "Buy Tickets" button to purchase a ticket.
+The available tickets count will be updated, reflecting the successful purchase.
+Repeat steps 2-5 to browse and purchase tickets for other movies.
+API Integration
+The Movie Ticket Booking System integrates with a backend API to fetch movie data and update ticket availability. The API endpoints used are:
+
+GET /films: Retrieves the list of available movies with details.
+GET /films/{id}: Retrieves detailed information about a specific movie.
+POST /films/{id}/buyTicket: Updates the ticket availability when a ticket is purchased.
+Note: The API endpoints and their implementation are not included in this code repository. Please refer to the API documentation for more information on setting up and using the backend.
+
+# Technologies Used
+The Movie Ticket Booking System is built using the following technologies:
+
+HTML
+CSS
+JavaScript
+
+# License
 This project is licensed under the MIT License.
 
-Copyright (c) 2023 ABIGAIL WAMAI
+# Contributing
+Contributions are welcome! If you would like to contribute to the Movie Ticket Booking System, please follow these steps:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
+Fork the repository.
+Create a new branch for your feature: git checkout -b feature-name
+Make your changes and commit them: git commit -m 'Add some feature'
+Push the changes to your forked repository: git push origin feature-name
+Submit a pull request detailing your changes.
