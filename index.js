@@ -71,7 +71,7 @@ fetchFilmDetails();
 function buyTicket(movieTitle, availableTickets) {
   if (availableTickets > 0) {
     availableTickets--;
-    document.getElementById('ticketsAvailable').textContent = `Tickets Available: ${availableTickets} - 1`;
+    document.getElementById('ticketsAvailable').textContent = `Tickets Available: ${availableTickets} `- 1
     alert(`Ticket bought for ${movieTitle}`);
   } else {
     alert(`Sorry, tickets are sold out for ${movieTitle}`);
