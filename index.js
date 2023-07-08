@@ -57,7 +57,7 @@ function fetchFilmDetails() {
           <p id="ticketsAvailable"><strong>Tickets Available: ${film.capacity - film.tickets_sold}</strong></p>
           <button id="button" type="button" onclick="buyTicket('${film.title}', ${film.capacity - film.tickets_sold})">Buy Tickets</button>
         </div>
-      `).join('');
+      `);
     })
     .catch(error => {
       console.error('Error:', error);
